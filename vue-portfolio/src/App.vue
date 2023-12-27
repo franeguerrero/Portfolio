@@ -1,85 +1,83 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
+<!-- Componente principal -->
+<template id="app">
+  <main>
+    <!-- Sección de vistas -->
+    <div id="hello"><HelloView :currentLanguage="currentLanguage" /></div>
+    <div id="about"><AboutView :currentLanguage="currentLanguage" class="view"/></div>
+    <div id="work"><WorkView :currentLanguage="currentLanguage" class="view" /></div>
+    <div id="skills"><SkillsView :currentLanguage="currentLanguage" class="view"/></div>
+    <div id="contact"><ContactView :currentLanguage="currentLanguage"/></div>
+    
+    <!-- Barra de navegación -->
+    <NavBar :currentLanguage="currentLanguage" @change-language="updateLanguage" />
 
-<template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+    <!-- Fondo -->
+    <BackGround />
+  </main>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+<script setup lang="ts">
+// Importaciones
+import { ref } from 'vue';
+import NavBar from './components/NavBar.vue';
+import BackGround from './components/BackGround.vue';
+import HelloView from './components/HelloView.vue';
+import WorkView from './components/WorkView.vue';
+import AboutView from './components/AboutView.vue';
+import SkillsView from './components/SkillsView.vue';
+import ContactView from './components/ContactView.vue';
+
+// Variables reactivas y funciones
+const currentLanguage = ref<string>('usa');
+
+const updateLanguage = (newLang: string) => {
+    currentLanguage.value = newLang;
+};
+</script>
+
+<style>
+/* Fuentes y estilos globales */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+
+/* Estilos generales */
+* {
+  color: #FFF;
+  font-family: 'Ubuntu', sans-serif;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  max-width: calc(100vw - (100vw - 100%)) !important;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+/* Estilos específicos para h2 */
+h2 {
+  font-weight: 900;
+  font-size: 3rem;
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+/* Estilos para la aplicación y vistas */
+#app {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+/* Estilos de animación */
+@media (prefers-reduced-motion: no-preference) {
+  .view {
+    scale: .6; 
+    opacity: 0;
+    animation: fade-in linear forwards;
+    animation-timeline: view();
+    animation-range: 150px 450px;
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
+  @keyframes fade-in {
+    to {
+      scale: 1; 
+      opacity: 1;
+    }
   }
 }
 </style>
