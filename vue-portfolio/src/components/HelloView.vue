@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps, computed, watch } from 'vue';
+import { ref, computed, watch } from 'vue';
 import ChevronDown from './ChevronDown.vue';
 import myImage from '@/assets/FacePNG.png';
 

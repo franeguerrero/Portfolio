@@ -12,7 +12,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
 
 const props = defineProps<{
   projectDetails: {
@@ -23,7 +22,6 @@ const props = defineProps<{
   };
 }>();
 
-console.log(props.projectDetails.imageSrc)
 </script>
 
 <style scoped>
