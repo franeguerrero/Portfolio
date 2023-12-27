@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, computed, ref, watch } from 'vue';
+import {computed, ref, watch } from 'vue';
 import WorkCard from "./WorkCard.vue";
 
 const props = defineProps<{

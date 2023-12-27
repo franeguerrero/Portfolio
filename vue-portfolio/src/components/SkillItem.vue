@@ -5,9 +5,7 @@
     </div>
   </template>
   
-  <script setup lang="ts">
-  import { defineProps } from 'vue';
-  
+  <script setup lang="ts">  
   const { name, logo } = defineProps<{
     name: string;
     logo: string;

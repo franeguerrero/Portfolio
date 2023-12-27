@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps, computed, watch } from 'vue';
+import { ref, computed, watch } from 'vue';
 import VueJSLogo from '@/assets/skills/vuejs.svg';
 import TypescriptLogo from '@/assets/skills/typescript.svg';
 import JavascriptLogo from '@/assets/skills/javascript.svg';
