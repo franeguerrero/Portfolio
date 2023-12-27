@@ -19,8 +19,10 @@ const props = defineProps<{
     description: string;
     link: string;
     imageSrc: string;
-  };
+};
 }>();
+
+console.log(props.projectDetails.imageSrc)
 
 </script>
 
